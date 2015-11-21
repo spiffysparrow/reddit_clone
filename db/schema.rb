@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120233839) do
+ActiveRecord::Schema.define(version: 20151121004611) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",      null: false
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20151120233839) do
 
   add_index "posts", ["sub_id"], name: "index_posts_on_sub_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "postsubs", force: :cascade do |t|
+    t.integer  "post_id",    null: false
+    t.integer  "sub_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "postsubs", ["post_id"], name: "index_postsubs_on_post_id"
+  add_index "postsubs", ["sub_id"], name: "index_postsubs_on_sub_id"
 
   create_table "subs", force: :cascade do |t|
     t.string   "title",       null: false

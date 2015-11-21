@@ -1,2 +1,8 @@
 <h3><%= @sub.title %></h3>
 <%= @sub.description %>
+<ul>
+
+<% @sub.posts.each do |post| %>
+<li> <%= link_to post.title, post_url(post) %></li>
+<% end %>
+</ul>

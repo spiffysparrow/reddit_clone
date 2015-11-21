@@ -8,5 +8,7 @@ class Sub < ActiveRecord::Base
 
   has_many :posts, dependent: :destroy
 
+  has_many :postsubs
 
+  has_many :posts, through: :postsubs, source: :post
 end

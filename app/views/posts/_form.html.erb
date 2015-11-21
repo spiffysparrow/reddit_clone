@@ -17,13 +17,15 @@
   <br/>
 
   <label>Sub
-  <select name="post[sub_id]">
+    <br>
     <% Sub.all.each do |sub| %>
-    <option value=<%= sub.id %>><%= sub.title %></option>
+    <label><%= sub.title %>
+    <input type="checkbox" name="post[sub_ids][]" value="<%= sub.id %>">
+   </label>
+   <br>
     <% end %>
   </label>
-  </select>
-  
+
   <br/>
   <label>Content
     <br>
