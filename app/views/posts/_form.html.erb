@@ -1,0 +1,36 @@
+<% action_url = post.persisted? ? post_url(post) : posts_url  %>
+<% http_method = post.persisted? ? "PATCH" : "POST" %>
+<% button_text = post.persisted? ? "Update post!" : "Create post!" %>
+
+<form action=" <%= action_url %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="<%= http_method %>">
+
+  <label>Title
+  <input type="text" name="post[title]" value="<%= post.title %>">
+  </label>
+  <br/>
+
+  <label>Url
+  <input type="text" name="post[url]" value="<%= post.url %>">
+  </label>
+  <br/>
+
+  <label>Sub
+  <select name="post[sub_id]">
+    <% Sub.all.each do |sub| %>
+    <option value=<%= sub.id %>><%= sub.title %></option>
+    <% end %>
+  </label>
+  </select>
+  
+  <br/>
+  <label>Content
+    <br>
+    <textarea name="post[content]" rows="8" cols="40"><%= post.content %></textarea>
+  </label>
+  <br>
+
+<input type="submit" value="<%= button_text %>">
+
+</form>
